@@ -1,5 +1,4 @@
-function doorsInSchool(n: number) {
-  return ~~Math.sqrt(n);
+function findR(n: number) {
+  return n**2*(3*n-2)
 }
-
-console.log(doorsInSchool(5));
+console.log(findR(5));
