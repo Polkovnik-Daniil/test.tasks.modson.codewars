@@ -1,6 +1,9 @@
-function rankVector(a: number[]) {
-  let sorted = a.slice().sort((a, b) => b - a);
-  return a.map((v) => sorted.indexOf(v) + 1);
+function splitStrings(row: string) {
+  let arr: string[] = [];
+  for (let i = 0; i < row.split("").length; i += 2) {
+    arr.push(row.slice(i, i + 2));
+  }
+  return arr.map((v) => (v.length === 1 ? v + "_" : v));
 }
 
-console.log(rankVector([3,3,3,3,3,5,1]));
+console.log(splitStrings('abc'));
