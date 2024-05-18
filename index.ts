@@ -1,9 +1,10 @@
-function splitStrings(row: string) {
-  let arr: string[] = [];
-  for (let i = 0; i < row.split("").length; i += 2) {
-    arr.push(row.slice(i, i + 2));
+function Sum(a: number, b: number): number {
+  while (b != 0) {
+    let carry = a & b;
+    a = a ^ b;
+    b = carry << 1;
   }
-  return arr.map((v) => (v.length === 1 ? v + "_" : v));
+  return a;
 }
 
-console.log(splitStrings('abc'));
+console.log(Sum(5, 4));
