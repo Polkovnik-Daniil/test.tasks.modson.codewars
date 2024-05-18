@@ -1,15 +1,55 @@
-function worldBitsWar(numbers: number[]) {
-  let odd = numbers.filter((v) => v % 2 !== 0);
-  let odd2 = odd
-    .map((v) => Math.abs(v).toString(2).replace(/0/g, "").length)
-    .map((v, i) => (odd[i] < 0 ? v * -1 : v * 1))
-    .reduce((a, b) => a + b, 0);
-  let even = numbers.filter((v) => v % 2 === 0);
-  let even2 = even
-    .map((v) => Math.abs(v).toString(2).replace(/0/g, "").length)
-    .map((v, i) => (even[i] < 0 ? v * -1 : v * 1))
-    .reduce((a, b) => a + b, 0);
-  return odd2 > even2 ? "odds win" : odd2 === even2 ? "tie" : "evens win";
+const words: any = {
+  zero: 0,
+  one: 1,
+  two: 2,
+  three: 3,
+  four: 4,
+  five: 5,
+  six: 6,
+  seven: 7,
+  eight: 8,
+  nine: 9,
+  ten: 10,
+  eleven: 11,
+  twelve: 12,
+  thirteen: 13,
+  fourteen: 14,
+  fifteen: 15,
+  sixteen: 16,
+  seventeen: 17,
+  eighteen: 18,
+  nineteen: 19,
+  twenty: 20,
+  thirty: 30,
+  forty: 40,
+  fifty: 50,
+  sixty: 60,
+  seventy: 70,
+  eighty: 80,
+  ninety: 90,
+};
+function wordify(n: number) {
+  const words1: any = {};
+  const mult1 = {};
+  for (let i in words) {
+    words1[words[i]] = i;
+  }
+  if (words1[n]) return words1[n];
+  let arr = [];
+  let s = n.toString().split("").reverse();
+  for (let i = 0; i < s.length; i++) {
+    arr.push(s[i].padEnd(i + 1, (0).toString()));
+  }
+  if (words1[n.toString().slice(-2)])
+    return (
+      words1[s[s.length - 1]] + " hundred " + words1[n.toString().slice(-2)]
+    );
+  return arr
+    .filter((v) => parseInt(v))
+    .map((v) => (words1[v] ? words1[v] : words1[v[0]] + " hundred"))
+    .reverse()
+    .join(" ");
 }
 
-console.log(worldBitsWar([7,-3,20]));
+
+console.log(wordify(326));
