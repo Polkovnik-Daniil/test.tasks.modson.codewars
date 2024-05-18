@@ -1,18 +1,13 @@
-function persistence(num: number) {
-  var times = 0;
-
-  var num_str = num.toString();
-
-  while (num_str.length > 1) {
-    times++;
-    num_str = num_str
-      .split("")
-      .map(Number)
-      .reduce((a, b) => a * b)
-      .toString();
-  }
-
-  return times;
+function stringOfSorts(row: string, ordering: string) {
+  var ordering_array: string[] = ordering.split("");
+  let arr1 = row
+    .split("")
+    .filter((v) => ordering_array.includes(v)) //отсеиваем символы которые не поддаются сортировке
+    .sort((a, b) => ordering_array.indexOf(a) - ordering_array.indexOf(b)); // сортируем строку по элементам ordering
+  //Как в данном случае работает функция-компаратор?
+  //Если a - b меньше 0, сортировка поставит a по меньшему индексу, чем b, то есть, a идёт первым.
+  let arr2 = row.split("").filter((v) => !ordering_array.includes(v));
+  return arr1.join("") + arr2.join("");
 }
 
-console.log(persistence(999));
+console.log(stringOfSorts("banana", "abn"));
