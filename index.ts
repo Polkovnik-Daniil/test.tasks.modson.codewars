@@ -1,7 +1,8 @@
-function breakingSearchBad(titles: string[], searchTerm: string) {
-  return titles.filter((v) => new RegExp(searchTerm, "i").test(v));
+function towerBuilder(n: number) {
+  return [...Array(n)].map(
+    (_, i) =>
+      " ".repeat(n - 1 - i) + "*".repeat(i * 2 + 1) + " ".repeat(n - 1 - i)
+  );
 }
 
-console.log(
-  breakingSearchBad(["Rocky 1", "Rocky 2", "My Little Poney"], "ock")
-);
+console.log(towerBuilder(5));
