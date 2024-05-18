@@ -1,13 +1,8 @@
-function christmasTree(height: number) {
-  let str: string[] = [];
-  for (let i = 1; i <= height; i++) {
-    str.push(
-      " ".repeat(height - i) +
-        "*".repeat((i - 1) * 2 + 1) +
-        " ".repeat(height - i)
-    );
-  }
-  return str.join("\n");
+function easyDiagonal(n: number, p: number) {
+  let fac = function (n: number): number {
+    return n === 0 ? 1 : n * fac(n - 1);
+  };
+  return Math.round(fac(n + 1) / (fac(n - p) * fac(p + 1)));
 }
 
-console.log(christmasTree(5));
+console.log(easyDiagonal(20, 4));
