@@ -1,12 +1,4 @@
-function powerset(nums: number[]) {
-  var subsets: number[][] = [[]];
-  for (const el of nums) {
-    const last = subsets.length - 1;
-    for (let i = 0; i <= last; i++) {
-      subsets.push([...subsets[i], el]);
-    }
-  }
-  return subsets;
+function ip_to_int32(ip: string) {
+  return ip.split(".").reduce((int, v) => 256 * int + Number(v), 0);
 }
-
-console.log(powerset([1, 2, 3, 4]));
+console.log(ip_to_int32("128.32.10.1"));
