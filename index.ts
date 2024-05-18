@@ -1,55 +1,18 @@
-const words: any = {
-  zero: 0,
-  one: 1,
-  two: 2,
-  three: 3,
-  four: 4,
-  five: 5,
-  six: 6,
-  seven: 7,
-  eight: 8,
-  nine: 9,
-  ten: 10,
-  eleven: 11,
-  twelve: 12,
-  thirteen: 13,
-  fourteen: 14,
-  fifteen: 15,
-  sixteen: 16,
-  seventeen: 17,
-  eighteen: 18,
-  nineteen: 19,
-  twenty: 20,
-  thirty: 30,
-  forty: 40,
-  fifty: 50,
-  sixty: 60,
-  seventy: 70,
-  eighty: 80,
-  ninety: 90,
-};
-function wordify(n: number) {
-  const words1: any = {};
-  const mult1 = {};
-  for (let i in words) {
-    words1[words[i]] = i;
+function persistence(num: number) {
+  var times = 0;
+
+  var num_str = num.toString();
+
+  while (num_str.length > 1) {
+    times++;
+    num_str = num_str
+      .split("")
+      .map(Number)
+      .reduce((a, b) => a * b)
+      .toString();
   }
-  if (words1[n]) return words1[n];
-  let arr = [];
-  let s = n.toString().split("").reverse();
-  for (let i = 0; i < s.length; i++) {
-    arr.push(s[i].padEnd(i + 1, (0).toString()));
-  }
-  if (words1[n.toString().slice(-2)])
-    return (
-      words1[s[s.length - 1]] + " hundred " + words1[n.toString().slice(-2)]
-    );
-  return arr
-    .filter((v) => parseInt(v))
-    .map((v) => (words1[v] ? words1[v] : words1[v[0]] + " hundred"))
-    .reverse()
-    .join(" ");
+
+  return times;
 }
 
-
-console.log(wordify(326));
+console.log(persistence(999));
