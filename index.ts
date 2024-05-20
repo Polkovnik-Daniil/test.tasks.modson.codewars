@@ -1,11 +1,8 @@
-function int32ToIp(int32: number) {
-  if (!int32) return "0.0.0.0";
-  console.log(int32.toString(2).match(/\d{8}/g));
-  return int32
+function intToBits(int: number, length: number = 32): string {
+  return int
     .toString(2)
-    .match(/\d{8}/g)!
-    .map((num) => parseInt(num, 2))
-    .join(".");
+    .padStart(32, "0")
+    .substring(32 - length, 32);
 }
-
-console.log(int32ToIp(32));
+console.log(intToBits(1, 1));
+console.log(intToBits(5, 8));
