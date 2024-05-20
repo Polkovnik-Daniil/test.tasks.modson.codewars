@@ -1,17 +1,10 @@
-function countDays(date: Date) {
-  let time = date;
-  let today = new Date();
-  let todayCheck =
-    time.getFullYear() === today.getFullYear() &&
-    time.getMonth() === today.getMonth() &&
-    time.getDay() === today.getDay();
-  if (todayCheck) return "Today is the day!";
-  let past = today.getTime() > time.getTime();
-  if (past) return "The day is in the past!";
-  return `${Math.round(
-    (time.getTime() - today.getTime()) / 1000 / 60 / 60 / 24
-  )} days`;
+//11 6 2
+function divisibleCount(x: number, y: number, k: number) {
+  if (y < x) throw new Error("y bigger than x");
+  let count: number = 0;
+  for (let i = x; i <= y; i++) {
+    count = i % k === 0 ? count+1 : count;
+  }
+  return count;
 }
-
-console.log(countDays(new Date("February 28, 2016")));
-console.log(countDays(new Date()));
+console.log(divisibleCount(6, 11, 2));
