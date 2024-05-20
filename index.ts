@@ -1,8 +1,17 @@
-function pigIt(row: string) {
-  return row
-    .split(" ")
-    .map((v) => (v.match(/[A-Za-z]/) ? v.slice(1) + v.slice(0, 1) + "ay" : v))
-    .join(" ");
+function countDays(date: Date) {
+  let time = date;
+  let today = new Date();
+  let todayCheck =
+    time.getFullYear() === today.getFullYear() &&
+    time.getMonth() === today.getMonth() &&
+    time.getDay() === today.getDay();
+  if (todayCheck) return "Today is the day!";
+  let past = today.getTime() > time.getTime();
+  if (past) return "The day is in the past!";
+  return `${Math.round(
+    (time.getTime() - today.getTime()) / 1000 / 60 / 60 / 24
+  )} days`;
 }
-console.log(pigIt("Pig latin is cool"));
-console.log(pigIt("Hello world !"));
+
+console.log(countDays(new Date("February 28, 2016")));
+console.log(countDays(new Date()));
