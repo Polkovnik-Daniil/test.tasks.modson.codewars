@@ -1,8 +1,15 @@
-function notVerySecure(row: string): boolean {
-  return /[a-zA-Z0-9]/g.test(row) && !/[\s_!]/.test(row);
-}
+Math.round = function(number: number) {
+  return (number - parseInt(number.toString()) >= 0.5) ? parseInt(number.toString()) + 1 : parseInt(number.toString()) ;
+};
 
-console.log(notVerySecure("fughvis034"));
-console.log(notVerySecure("Фi73874riuhfdv_oaigfbho"));
-console.log(notVerySecure("i73874riuhfdv oaigfbho"));
-console.log(notVerySecure("шдовгтмазщапм12353_ "));
+Math.ceil = function(number: number) {
+  return (parseInt(number.toString()) === number) ? number : parseInt(number.toString()) + 1;
+};
+
+Math.floor = function(number: number) {
+  return parseInt(number.toString());
+};
+
+console.log(Math.floor(5.999));
+console.log(Math.ceil(5.999));
+console.log(Math.round(5.999));
