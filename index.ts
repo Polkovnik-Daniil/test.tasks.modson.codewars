@@ -1,5 +1,4 @@
-//11 6 2
-function countRepeats(row: string) {
-  return row.length - row.replace(/(.)\1+/g, "$1").length;
-}
-console.log(countRepeats("ab cca"));
+const cakes = (needs: any, has: any) =>
+  Math.min(
+    ...Object.keys(needs).map((key) => Math.floor(has[key] / needs[key] || 0))
+  );
