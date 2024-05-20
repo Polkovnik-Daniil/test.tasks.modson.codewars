@@ -1,9 +1,8 @@
-function humanReadable(seconds: number) {
-  var hours = parseInt((seconds / 3600).toString());
-  var minutes = parseInt((seconds / 60).toString()) % 60;
-  var seconds = seconds % 60;
-
-  var dozen = (value: number) => (value < 10 ? "0" + value : value);
-  return dozen(hours) + ":" + dozen(minutes) + ":" + dozen(seconds);
+function pigIt(row: string) {
+  return row
+    .split(" ")
+    .map((v) => (v.match(/[A-Za-z]/) ? v.slice(1) + v.slice(0, 1) + "ay" : v))
+    .join(" ");
 }
-console.log(humanReadable(359999));
+console.log(pigIt("Pig latin is cool"));
+console.log(pigIt("Hello world !"));
