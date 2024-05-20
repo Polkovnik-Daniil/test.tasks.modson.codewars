@@ -1,38 +1,56 @@
-interface Array<T> {
-  square(): number[];
-  cube(): number[];
-  sum(): any;
-  average(): number;
-  even(): any[];
-  odd(): any[];
+function zero(func?: any) {
+  return func ? func(0) : 0;
+}
+function one(func?: any) {
+  return func ? func(1) : 1;
+}
+function two(func?: any) {
+  return func ? func(2) : 2;
+}
+function three(func?: any) {
+  return func ? func(3) : 3;
+}
+function four(func?: any) {
+  return func ? func(4) : 4;
+}
+function five(func?: any) {
+  return func ? func(5) : 5;
+}
+function six(func?: any) {
+  return func ? func(6) : 6;
+}
+function seven(func?: any) {
+  return func ? func(7) : 7;
+}
+function eight(func?: any) {
+  return func ? func(8) : 8;
+}
+function nine(func?: any) {
+  return func ? func(9) : 9;
 }
 
-Array.prototype.square = function () {
-  return this.map((v) => v * v);
-};
-Array.prototype.cube = function () {
-  return this.map((v) => v * v * v);
-};
-Array.prototype.sum = function () {
-  return this.reduce((a, b) => a + b, 0);
-};
-Array.prototype.average = function () {
-  return this.reduce((a, b) => a + b, 0) / this.length;
-};
-Array.prototype.even = function () {
-  return this.filter((v) => v % 2 == 0);
-};
-Array.prototype.odd = function () {
-  return this.filter((v) => v % 2 !== 0);
-};
+function plus(num2: number) {
+  return function (num1: number) {
+    return num1 + num2;
+  };
+}
+function minus(num2: number) {
+  return function (num1: number) {
+    return num1 - num2;
+  };
+}
+function times(num2: number) {
+  return function (num1: number) {
+    return num1 * num2;
+  };
+}
+function dividedBy(num2: number) {
+  return function (num1: number) {
+    return num1 / num2;
+  };
+}
 
-
-
-var numbers = [1, 2, 3, 4, 5];
-
-console.log(numbers.square());  // must return [1, 4, 9, 16, 25]
-console.log(numbers.cube());    // must return [1, 8, 27, 64, 125]
-console.log(numbers.average()); // must return 3
-console.log(numbers.sum());     // must return 15
-console.log(numbers.even());    // must return [2, 4]
-console.log(numbers.odd());     // must return [1, 3, 5]
+console.log(seven(times(five()))); // must return 35
+console.log(four(plus(nine()))); // must return 13
+console.log(eight(minus(three()))); // must return 5
+console.log(six(dividedBy(two()))); // must return 3
