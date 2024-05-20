@@ -1,4 +1,15 @@
-const rgbToHex = (r: number, g: number, b: number) =>
-  [r, g, b].map((x) => x.toString(16).padStart(2, "0")).join("");
+function twosDifference(input: number[]) {
+  input = input.sort((a, b) => a - b);
+  let arr: number[][] = [];
+  for (let i = 0; i < input.length; i++) {
+    for (let j = i + 1; j < input.length; j++) {
+      if (Math.abs(input[i] - input[j]) === 2) {
+        arr.push([input[i], input[j]]);
+        break;
+      }
+    }
+  }
+  return arr;
+}
 
-console.log(rgbToHex(148, 0, 211)); // '9400D3'
+console.log(twosDifference([4,3,1,5,6]));
