@@ -1,8 +1,11 @@
-function anagrams(word: string, words: string[]) {
-  return words.filter(
-    (symbols) =>
-      symbols.split("").sort().join("") === word.split("").sort().join("")
-  );
+function int32ToIp(int32: number) {
+  if (!int32) return "0.0.0.0";
+  console.log(int32.toString(2).match(/\d{8}/g));
+  return int32
+    .toString(2)
+    .match(/\d{8}/g)!
+    .map((num) => parseInt(num, 2))
+    .join(".");
 }
 
-console.log(anagrams("abba", ["aabb", "abcd", "bbaa", "dada"]));
+console.log(int32ToIp(32));
