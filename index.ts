@@ -1,4 +1,4 @@
-const cakes = (needs: any, has: any) =>
-  Math.min(
-    ...Object.keys(needs).map((key) => Math.floor(has[key] / needs[key] || 0))
-  );
+const rgbToHex = (r: number, g: number, b: number) =>
+  [r, g, b].map((x) => x.toString(16).padStart(2, "0")).join("");
+
+console.log(rgbToHex(148, 0, 211)); // '9400D3'
