@@ -1,10 +1,9 @@
-function camelize(row: string): string {
-  return row
-    .replace(/[^a-z0-9]/gi, " ")
-    .split(" ")
-    .map((v) => v.slice(0, 1).toUpperCase() + v.slice(1).toLowerCase())
-    .join("");
+function grabscrab(anagram: string, dictionary: string[]) {
+  anagram = anagram.split("").sort().join();
+  let arr = dictionary
+    .slice()
+    .map((word) => word.split("").sort().join() === anagram);
+  return dictionary.filter((word, i) => arr[i] === true);
 }
-console.log(camelize("example name"));
-console.log(camelize("your-NaMe-here"));
-console.log(camelize("testing ABC"));
+
+console.log(grabscrab("ortsp", ["sport", "parrot", "ports", "matey"]));
