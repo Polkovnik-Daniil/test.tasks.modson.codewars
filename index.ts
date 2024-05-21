@@ -1,7 +1,12 @@
-function isIntArray(array: number[]): boolean {
-  return Array.isArray(array) && array.every((x) => typeof x === "number" && !isNaN(x));
+function evilTwin(obj: any): any {
+  let twin = Object.assign({}, obj);
+  twin.hasGoatee = true;
+  return twin;
 }
 
-console.log(isIntArray([]));
-console.log(isIntArray([1, 2, 3, 4]));
-console.log(isIntArray([1, 2, 3, NaN]));
+var orig = { x: 5 };
+console.log(orig.x); // -> 5
+//console.log(orig.hasGoatee) // -> undefined
+var twin = evilTwin(orig);
+console.log(twin.x); // -> 5
+console.log(twin.hasGoatee); // -> true
