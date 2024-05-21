@@ -1,1 +1,1 @@
-Задача которая была выполнена в данном коммите: https://www.codewars.com/kata/515decfd9dcfc23bb6000006
+Задача которая была выполнена в данном коммите: https://www.codewars.com/kata/52a112d9488f506ae7000b95
