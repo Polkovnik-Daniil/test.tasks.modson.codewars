@@ -1,9 +1,8 @@
-function grabscrab(anagram: string, dictionary: string[]) {
-  anagram = anagram.split("").sort().join();
-  let arr = dictionary
-    .slice()
-    .map((word) => word.split("").sort().join() === anagram);
-  return dictionary.filter((word, i) => arr[i] === true);
+function toInteger(value: any) {
+  if (isNaN(Number(value))) return 0;
+  value = Math.trunc(value);
+  if (!Number.isFinite(value)) return 0;
+  return value;
 }
 
-console.log(grabscrab("ortsp", ["sport", "parrot", "ports", "matey"]));
+console.log(toInteger(" 98"));
