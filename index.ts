@@ -1,15 +1,10 @@
-function twosDifference(input: number[]) {
-  input = input.sort((a, b) => a - b);
-  let arr: number[][] = [];
-  for (let i = 0; i < input.length; i++) {
-    for (let j = i + 1; j < input.length; j++) {
-      if (Math.abs(input[i] - input[j]) === 2) {
-        arr.push([input[i], input[j]]);
-        break;
-      }
-    }
-  }
-  return arr;
+function camelize(row: string): string {
+  return row
+    .replace(/[^a-z0-9]/gi, " ")
+    .split(" ")
+    .map((v) => v.slice(0, 1).toUpperCase() + v.slice(1).toLowerCase())
+    .join("");
 }
-
-console.log(twosDifference([4,3,1,5,6]));
+console.log(camelize("example name"));
+console.log(camelize("your-NaMe-here"));
+console.log(camelize("testing ABC"));
